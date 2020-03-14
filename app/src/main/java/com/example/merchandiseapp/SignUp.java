@@ -19,12 +19,13 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     EditText user,pass;
-
+    ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
 
@@ -35,7 +36,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
       user = (EditText) findViewById(R.id.username);
       pass = (EditText) findViewById(R.id.password);
-
+      progressBar = (ProgressBar) findViewById(R.id.loading);
 
 
       mAuth = FirebaseAuth.getInstance();
@@ -72,16 +73,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
         
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
+
                     Toast.makeText(getApplicationContext(),"user registered",Toast.LENGTH_SHORT).show();
                 }else{
+
+                    /* this command is to be used when there is a problem while registering for the user
                     FirebaseAuthException e = (FirebaseAuthException )task.getException();
                     Toast.makeText(getApplicationContext(), "Failed Registration: "+e.getMessage(), Toast.LENGTH_LONG).show();
-
+                     */
+                    Toast.makeText(getApplicationContext(),"Some Error Occurred" , Toast.LENGTH_SHORT).show();
                 }
 
             }
