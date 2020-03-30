@@ -9,4 +9,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_my">MYActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="button">Button</string>
+
+    <string name="create_account">Create Account !!</string>
+    <string name="already_have_an_account_sign_in">Already have an account?? Sign In</string>
+    <string name="register">Register</string>
+
+
 </resources>
