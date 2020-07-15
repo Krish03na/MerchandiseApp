@@ -1,7 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
+<<<<<<< HEAD
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+=======
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+>>>>>>> home page+signin+navigation
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

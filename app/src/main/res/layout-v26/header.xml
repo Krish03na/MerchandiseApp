@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="200dp"
+     android:background="@drawable/login_bg"
+    android:gravity="bottom"
+    android:padding="20dp"
+    >
+
+    <ImageView
+    android:id="@+id/profile_image"
+    android:layout_width="96dp"
+    android:layout_height="96dp"
+    android:src="@drawable/images"
+        android:contentDescription="profile_pic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/emilys_candy"
+        android:text="@string/hello"
+        android:textSize="25sp" />
+
+</LinearLayout>

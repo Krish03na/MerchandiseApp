@@ -19,6 +19,33 @@
     <string name="create_account">Create Account !!</string>
     <string name="already_have_an_account_sign_in">Already have an account?? Sign In</string>
     <string name="register">Register</string>
+<<<<<<< HEAD
 
+=======
+    <string name="merch">Merch</string>
+    <string name="stores_the_product">stores the product</string>
+    <string name="todo">TODO</string>
+    <string name="search">Search</string>
+    <string name="shop_all_the_merch_of_various_fests_events_n_hostels_and_departments">Shop all the merch of various fests, events,  hostels and departments</string>
+    <string name="categories">Categories</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="hello">Hello !</string>
+    <string name="home">Home</string>
+    <string name="shop_by_category">Shop by Category</string>
+    <string name="your_orders">Your Orders</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="communicate">Communicate</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="rate">Rate /</string>
+    <string name="settings">Settings</string>
+    <string name="nav_draw_open">Open navigation drawer</string>
+    <string name="nav_draw_close">Close navigation drawer</string>
+>>>>>>> home page+signin+navigation
 
 </resources>
