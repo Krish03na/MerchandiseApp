@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-<<<<<<< HEAD
-=======
-    xmlns:tools="http://schemas.android.com/tools"
->>>>>>> home page+signin+navigation
+
+
     package="com.example.merchandiseapp">
 
     <dist:module dist:instant="true" />
@@ -16,11 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
 
-=======
         <activity android:name=".loginActivity"></activity>
->>>>>>> home page+signin+navigation
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -31,13 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" />
-<<<<<<< HEAD
-=======
+
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
->>>>>>> home page+signin+navigation
+
     </application>
 
 </manifest>

@@ -19,9 +19,7 @@
     <string name="create_account">Create Account !!</string>
     <string name="already_have_an_account_sign_in">Already have an account?? Sign In</string>
     <string name="register">Register</string>
-<<<<<<< HEAD
 
-=======
     <string name="merch">Merch</string>
     <string name="stores_the_product">stores the product</string>
     <string name="todo">TODO</string>
@@ -46,6 +44,6 @@
     <string name="settings">Settings</string>
     <string name="nav_draw_open">Open navigation drawer</string>
     <string name="nav_draw_close">Close navigation drawer</string>
->>>>>>> home page+signin+navigation
+
 
 </resources>
