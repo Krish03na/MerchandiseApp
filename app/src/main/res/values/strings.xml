@@ -44,6 +44,7 @@
     <string name="settings">Settings</string>
     <string name="nav_draw_open">Open navigation drawer</string>
     <string name="nav_draw_close">Close navigation drawer</string>
+    <string name="do_not_match">Passwords do not match</string>
 
 
 </resources>
