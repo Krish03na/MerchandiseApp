@@ -15,18 +15,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/emilys_candy"
-        android:text="Merch"
         android:paddingLeft="50dp"
         android:paddingTop="100dp"
-        android:textSize="100sp"
-        android:textColor="#FFFFFF"/>
+        android:text="@string/merch"
+        android:textColor="#FFFFFF"
+        android:textSize="100sp" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="Sign in to Continue"
+       android:text="@string/sign_in_to_continue"
        android:fontFamily="@font/emilys_candy"
        android:textSize="35sp"
-       android:paddingLeft="40dp"/>
+       android:layout_gravity="center"/>
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,18 +45,19 @@
             android:layout_width="match_parent"
             android:id="@+id/username"
             app:endIconMode="clear_text"
-            android:hint="Username"
+            android:hint="Email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/password"
-            android:hint="Password"
+            android:hint="@string/password"
             app:endIconMode="clear_text"
             android:layout_marginTop="5dp"
             app:passwordToggleEnabled="true"
@@ -68,7 +74,7 @@
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Forget Password"
+            android:text="@string/forget_password"
             android:id="@+id/frg_pwd"
             android:background="#00000000"
             android:layout_gravity="right"
@@ -78,7 +84,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GO"
+            android:text="@string/go"
             android:id="@+id/login_btn"
             android:background="#000"
             android:textColor="#fff"
@@ -90,11 +96,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signup"
-            android:text="New User? Sign Up"
+            android:text="@string/new_user_sign_up"
             android:background="#00000000"
             android:layout_gravity="right"
             android:elevation="0dp"
             android:layout_margin="5dp"
             />
     </LinearLayout>
+
+
 </LinearLayout>

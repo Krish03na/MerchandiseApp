@@ -2,19 +2,21 @@ package com.example.merchandiseapp;
 
 public class UserHelper {
 
-    String username,name,email,phone,password;
+    String username, name, phone, email;
+    Boolean isSeller;
 
     public UserHelper() {
-       //empty constructor
+
     }
 
-    public UserHelper(String username, String name, String email, String phone, String password) {
+    public UserHelper(String username, String name, String phone, String email, Boolean isSeller) {
         this.username = username;
         this.name = name;
-        this.email = email;
         this.phone = phone;
-        this.password = password;
+        this.email = email;
+        this.isSeller = isSeller;
     }
+
 
     public String getUsername() {
         return username;
@@ -24,15 +26,16 @@ public class UserHelper {
         return name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getPhone() {
         return phone;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
+
+    public Boolean getSeller() {
+        return isSeller;
+    }
+
 }
