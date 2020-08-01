@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity"
+    android:background="@drawable/login_bg">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/head"
+        android:gravity="center"
+        android:text="Describe the Product"
+        android:textSize="40sp"
+        android:layout_marginTop="50dp"
+        />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/insert_image"
+        android:layout_below="@+id/head"
+        android:id="@+id/insert_image"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="100dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/insert_image"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/pname"
+        android:background="@drawable/search_bg"
+        android:hint="Product Name"
+        android:padding="10dp"
+        android:textSize="30sp"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/pname"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/pdesc"
+        android:background="@drawable/search_bg"
+        android:hint="Product Description"
+        android:padding="10dp"
+        android:textSize="30sp"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/pdesc"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/search_bg"
+        android:hint="Product Price"
+        android:id="@+id/pprice"
+        android:padding="10dp"
+        android:textSize="30sp"/>
+
+
+
+</RelativeLayout>

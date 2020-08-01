@@ -52,6 +52,13 @@
 
     <string name="go">GO</string>
     <string name="new_user_sign_up">New User? Sign Up</string>
+    <string name="product_name">product_name</string>
+    <string name="textview">textview</string>
+    <string name="price">price</string>
+    <string name="product_image">product_image</string>
+    <string name="reached_admin_activity">Reached admin activity</string>
+    <string name="add_new_product">Add New Product</string>
+
 
 
 </resources>

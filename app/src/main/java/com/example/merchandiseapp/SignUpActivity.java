@@ -182,7 +182,7 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
         final String email = regemail.getEditText().getText().toString();
         final String phone = regphone.getEditText().getText().toString();
         final String password = regpwd.getEditText().getText().toString();
-        final Boolean isSeller = false;
+
 
         if(validname(view) && validuser(view) && validemail(view) && validpass(view) && validphone(view)) {
             progressBar.setVisibility(View.VISIBLE);
@@ -195,7 +195,7 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
                                 // Sign in success, update UI with the signed-in user's information
 
                                 //stores user information in realtime database
-                                UserHelper helper = new UserHelper(username, name, phone, email, isSeller);
+                                UserHelper helper = new UserHelper(username, name, phone, email);
                                 //the below statement does not support email as child
                                 ref.child(username).setValue(helper);
                                 //The below commented lines verify the email adddress given by the user

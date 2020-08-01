@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,25 +33,33 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     TextInputLayout user, pwd;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
+    TextView adminb, nadmin;
+    public boolean isadmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        isadmin =false;
         callsignup = (Button) findViewById(R.id.signup);
         login_button = (Button) findViewById(R.id.login_btn);
         user = (TextInputLayout) findViewById(R.id.username);
         pwd = (TextInputLayout) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        adminb = (TextView) findViewById(R.id.adminb);
+        nadmin = (TextView) findViewById(R.id.nadminb) ;
 
       callsignup.setOnClickListener(this);
       login_button.setOnClickListener(this);
+      adminb.setOnClickListener(this);
+      nadmin.setOnClickListener(this);
       mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        nadmin.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
     }
     @Override
@@ -62,6 +71,18 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.signup:
                 Intent intent = new Intent(this, SignUpActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.adminb:
+                isadmin = true;
+                login_button.setText("Login Admin");
+                adminb.setVisibility(View.INVISIBLE);
+                nadmin.setVisibility(View.VISIBLE);
+                break;
+            case R.id.nadminb:
+                isadmin = false;
+                login_button.setText("Login");
+                adminb.setVisibility(View.VISIBLE);
+                nadmin.setVisibility(View.INVISIBLE);
                 break;
         }
     }
@@ -100,7 +121,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         if (!validuser(view) || !validpass(view)) {
             return;
         } else {
-            isUser();
+                isUser();
         }
 
     }
@@ -115,8 +136,12 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(ProgressBar.INVISIBLE);
                         if (task.isSuccessful()) {
-                            
-                            Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                            Intent intent;
+                             if(isadmin){
+                                 intent = new Intent(loginActivity.this,AdminCategoryActivity.class);
+                             }else {
+                                 intent = new Intent(loginActivity.this, MainActivity.class);
+                             }
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         } else {
