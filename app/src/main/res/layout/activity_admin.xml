@@ -25,14 +25,14 @@
         android:layout_below="@+id/head"
         android:id="@+id/insert_image"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="100dp"/>
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_below="@+id/insert_image"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/pname"
         android:background="@drawable/search_bg"
         android:hint="Product Name"
@@ -43,7 +43,7 @@
         android:layout_height="60dp"
         android:layout_below="@+id/pname"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/pdesc"
         android:background="@drawable/search_bg"
         android:hint="Product Description"
@@ -54,7 +54,7 @@
         android:layout_height="60dp"
         android:layout_below="@+id/pdesc"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/search_bg"
         android:hint="Product Price"
         android:id="@+id/pprice"
@@ -66,7 +66,7 @@
        android:layout_height="60dp"
        android:background="@drawable/button_bg"
        android:layout_below="@+id/pprice"
-       android:layout_marginStart="50dp"
+       android:layout_centerHorizontal="true"
        android:layout_marginTop="10dp"
        android:text="ADD"
        android:id="@+id/addnewprod"
