@@ -1,18 +1,24 @@
 package com.example.merchandiseapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -29,11 +35,12 @@ import com.google.firebase.database.ValueEventListener;
 public class loginActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    Button callsignup, login_button;
+    Button callsignup, login_button, forget_password;
     TextInputLayout user, pwd;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView adminb, nadmin;
+    ProgressDialog pd;
     public boolean isadmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         isadmin =false;
         callsignup = (Button) findViewById(R.id.signup);
         login_button = (Button) findViewById(R.id.login_btn);
+        forget_password = (Button) findViewById(R.id.frg_pwd);
         user = (TextInputLayout) findViewById(R.id.username);
         pwd = (TextInputLayout) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -51,9 +59,12 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
       callsignup.setOnClickListener(this);
       login_button.setOnClickListener(this);
+      forget_password.setOnClickListener(this);
       adminb.setOnClickListener(this);
       nadmin.setOnClickListener(this);
       mAuth = FirebaseAuth.getInstance();
+
+      pd = new ProgressDialog(this);
     }
 
     @Override
@@ -84,7 +95,71 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 adminb.setVisibility(View.VISIBLE);
                 nadmin.setVisibility(View.INVISIBLE);
                 break;
+            case R.id.frg_pwd:
+                showRecoverPasswordDialog();
+
         }
+    }
+
+    private void showRecoverPasswordDialog() {
+
+        //Alert Dailog box
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Recover Password");
+
+        LinearLayout linearLayout = new LinearLayout(this);
+
+        final EditText emailID = new EditText(this);
+        emailID.setHint("Email");
+        emailID.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        emailID.setMinEms(16);
+        linearLayout.addView(emailID);
+        linearLayout.setPadding(50,10,10,10);
+
+        builder.setView(linearLayout);
+        //recover button
+        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                   String email = emailID.getText().toString().trim();
+                   beginRecoverymail(email);
+
+            }
+        });
+        //cancel button
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               //dismiss dailog
+                dialog.dismiss();
+            }
+        });
+
+        //show dailog box
+        builder.create().show();
+    }
+
+    private void beginRecoverymail(String email) {
+        pd.setMessage("Sending email...");
+        pd.show();
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                pd.dismiss();
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Email Sent",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Error Occured",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+               Toast.makeText(getApplicationContext(), "Error :" + e , Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private Boolean validuser(View view) {
