@@ -23,11 +23,6 @@
             android:text="Merch"
             android:textColor="#FFFFFF"
             android:textSize="100sp" />
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#00000000"
-            android:text="Already Have an account" />
+            android:text="Already Have an account ?? Click here" />
 
 
     </LinearLayout>

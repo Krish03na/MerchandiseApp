@@ -38,7 +38,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     Button callsignup, login_button, forget_password;
     TextInputLayout user, pwd;
     FirebaseAuth mAuth;
-    ProgressBar progressBar;
+
     TextView adminb, nadmin;
     ProgressDialog pd;
     public boolean isadmin;
@@ -53,7 +53,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         forget_password = (Button) findViewById(R.id.frg_pwd);
         user = (TextInputLayout) findViewById(R.id.username);
         pwd = (TextInputLayout) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
         adminb = (TextView) findViewById(R.id.adminb);
         nadmin = (TextView) findViewById(R.id.nadminb) ;
 
@@ -71,7 +71,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void onStart() {
         super.onStart();
         nadmin.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.INVISIBLE);
     }
     @Override
     public void onClick(View view){
@@ -192,7 +191,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void login(View view) {
         String username = user.getEditText().getText().toString();
         String password = pwd.getEditText().getText().toString();
-
+        pd.setMessage("Checking your Credentials");
+        pd.show();
         if (!validuser(view) || !validpass(view)) {
             return;
         } else {
@@ -204,12 +204,13 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private void isUser() {
         final String enteredemail = user.getEditText().getText().toString().trim();
         final String enteredPassword = pwd.getEditText().getText().toString().trim();
-        progressBar.setVisibility(ProgressBar.VISIBLE);
+       // progressBar.setVisibility(ProgressBar.VISIBLE);
         mAuth.signInWithEmailAndPassword(enteredemail, enteredPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(ProgressBar.INVISIBLE);
+                        //progressBar.setVisibility(ProgressBar.INVISIBLE);
+                        pd.dismiss();
                         if (task.isSuccessful()) {
                             Intent intent;
                              if(isadmin){

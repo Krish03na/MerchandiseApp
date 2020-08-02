@@ -20,12 +20,8 @@
         android:text="@string/merch"
         android:textColor="#FFFFFF"
         android:textSize="100sp" />
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-   <TextView
+
+    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:text="@string/sign_in_to_continue"
