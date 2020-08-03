@@ -29,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,10 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView hname;
     MenuItem login,logout,profile;
     View hview;
-
+    CircleImageView profimage;
     FirebaseAuth mAuth;
     FirebaseDatabase root;
     DatabaseReference ref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Menu menu = navigationView.getMenu();
         hview = navigationView.getHeaderView(0);
         hname = hview.findViewById(R.id.headername);
+        profimage = hview.findViewById(R.id.profile_image);
+
         MenuItem logout = menu.findItem(R.id.nav_logout);
         MenuItem profile = menu.findItem(R.id.nav_profile);
         MenuItem login = menu.findItem(R.id.nav_login);
@@ -113,15 +118,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        if(Build.VERSION.SDK_INT > 11) {
-//            invalidateOptionsMenu();
-//            menu.findItem(R.id.option2).setVisible(false);
-//            menu.findItem(R.id.option4).setVisible(true);
-//        }
-//        return super.onPrepareOptionsMenu(menu);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
