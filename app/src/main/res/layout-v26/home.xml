@@ -102,10 +102,6 @@
              android:background="#02008577"
              android:minHeight="?attr/actionBarSize"
              android:theme="?attr/actionBarTheme"
-             app:layout_constraintBottom_toTopOf="@+id/C_name"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="parent"
              app:navigationIcon="@drawable/ic_settings_black_24dp" />
 
       </RelativeLayout>
