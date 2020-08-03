@@ -23,89 +23,91 @@
        app:headerLayout="@layout/header"
        app:menu="@menu/main_menu"
        android:layout_gravity="start"/>
-
-
-   <RelativeLayout
+   <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/lay1"
-       android:padding="10dp">
-      <LinearLayout
+       android:layout_height="match_parent">
+
+      <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_below="@+id/lay1"
-          android:id="@+id/lay2"
-          android:gravity="center"
-          tools:ignore="NotSibling"
-          android:layout_marginTop="50dp">
-         <TextView
-             android:id="@+id/C_name"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:fontFamily="@font/emilys_candy"
-             android:text="@string/merch"
-             android:textColor="@android:color/black"
-             android:textSize="35sp"
-             />
-
-         <ImageView
-             android:id="@+id/cart"
+          tools:context = ".MainActivity">
+         <LinearLayout
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:layout_marginLeft="250dp"
-             android:contentDescription="@string/stores_the_product"
-             app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
-      </LinearLayout>
-      <TextView
-          android:id="@+id/description"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="10dp"
-          android:fontFamily="@font/amita"
-          android:text="@string/shop_all_the_merch_of_various_fests_events_n_hostels_and_departments"
-          android:textSize="14sp"
-          android:layout_below="@id/lay2" />
+             android:id="@+id/lay1"
+             android:layout_marginTop="35dp"
+             android:orientation="horizontal">
+            <TextView
+                android:id="@+id/C_name"
+                android:layout_width="142dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/emilys_candy"
+                android:text="@string/merch"
+                android:textColor="@android:color/black"
+                android:textSize="35sp"
+                />
 
-      <EditText
-          android:id="@+id/search"
-          android:layout_width="match_parent"
-          android:layout_height="50dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="24dp"
-          android:textSize="24sp"
-          android:autofillHints=""
-          android:background="@drawable/search_bg"
-          android:drawableStart="@android:drawable/ic_menu_search"
-          android:ems="10"
-          android:hint="@string/search"
-          android:inputType="textPersonName"
-          android:layout_below="@+id/description"
-          tools:targetApi="o" />
+            <ImageView
+                android:id="@+id/cart"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/stores_the_product"
+                app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
+         </LinearLayout>
+         <TextView
+             android:id="@+id/description"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="10dp"
+             android:fontFamily="@font/amita"
+             android:text="@string/shop_all_the_merch_of_various_fests_events_n_hostels_and_departments"
+             android:textSize="14sp"
+             android:layout_below="@+id/lay1"
+             tools:ignore="UnknownId" />
 
-      <androidx.recyclerview.widget.RecyclerView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/product_recycler"
-          android:layout_below="@+id/search"
-          android:layout_marginTop="15dp"/>
-   </RelativeLayout>
+         <EditText
+             android:id="@+id/editText"
+             android:layout_width="381dp"
+             android:layout_height="50dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginTop="24dp"
+             android:layout_marginEnd="16dp"
+             android:autofillHints=""
+             android:background="@drawable/search_bg"
+             android:drawableStart="@android:drawable/ic_menu_search"
+             android:ems="10"
+             android:hint="@string/search"
+             android:inputType="textPersonName"
+             android:text="@android:string/search_go"
+             android:layout_below="@+id/description"
+             tools:targetApi="o" />
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/product_recycler"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="20dp"
+             android:layout_below="@+id/editText" />
 
 
-   <androidx.appcompat.widget.Toolbar
-       android:id="@+id/toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="#02008577"
-       android:minHeight="?attr/actionBarSize"
-       android:theme="?attr/actionBarTheme"
-       app:layout_constraintBottom_toTopOf="@+id/C_name"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:navigationIcon="@drawable/ic_shopping_cart_black_24dp" />
+         <androidx.appcompat.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="#02008577"
+             android:minHeight="?attr/actionBarSize"
+             android:theme="?attr/actionBarTheme"
+             app:layout_constraintBottom_toTopOf="@+id/C_name"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:navigationIcon="@drawable/ic_settings_black_24dp" />
 
-
-
+      </RelativeLayout>
+   </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

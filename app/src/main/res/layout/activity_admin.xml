@@ -61,15 +61,15 @@
         android:padding="10dp"
         android:textSize="30sp"/>
 
-   <Button
-       android:layout_width="300dp"
-       android:layout_height="60dp"
-       android:background="@drawable/button_bg"
-       android:layout_below="@+id/pprice"
-       android:layout_centerHorizontal="true"
-       android:layout_marginTop="10dp"
-       android:text="ADD"
-       android:id="@+id/addnewprod"
-       android:textSize="30sp"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_bg"
+        android:layout_below="@+id/pprice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="ADD"
+        android:id="@+id/addnewprod"
+        android:textSize="30sp"/>
 
 </RelativeLayout>

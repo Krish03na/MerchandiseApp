@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         navigationView.setNavigationItemSelectedListener(this);
 
-       mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         recyclerView = (RecyclerView) findViewById(R.id.product_recycler);
-       recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
     }
@@ -97,11 +97,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int i, @NonNull Products products) {
-                          productViewHolder.txtname.setText(products.getName());
+                productViewHolder.txtname.setText(products.getName());
 //                         Toast.makeText(getApplicationContext(),products.getName(),Toast.LENGTH_SHORT).show();
-                          productViewHolder.txtDescription.setText(products.getDescription());
-                          productViewHolder.txtprice.setText("Price = " + "₹"+ products.getPrice());
-                         Picasso.get().load(products.getImage()).into(productViewHolder.imgproduct);
+                productViewHolder.txtDescription.setText(products.getDescription());
+                productViewHolder.txtprice.setText("Price = " + "₹"+ products.getPrice());
+                Picasso.get().load(products.getImage()).into(productViewHolder.imgproduct);
             }
 
             @NonNull
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(user!=null) {
             email = user.getEmail();
             menu.removeItem(R.id.nav_login);
-       }else {
+        }else {
             menu.removeItem(R.id.nav_logout);
             menu.removeItem(R.id.nav_profile);
         }

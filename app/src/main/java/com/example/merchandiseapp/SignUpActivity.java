@@ -165,7 +165,7 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
                 regcnf.setErrorEnabled(false);
                 return true;
             }else{
-                 regpwd.setError("length 8-40 should contain 1 digit,lowercase,uppercase and a special character");
+                regpwd.setError("length 8-40 should contain 1 digit,lowercase,uppercase and a special character");
                 return false;
             }
         }else{

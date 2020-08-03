@@ -57,14 +57,14 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         adminb = (TextView) findViewById(R.id.adminb);
         nadmin = (TextView) findViewById(R.id.nadminb) ;
 
-      callsignup.setOnClickListener(this);
-      login_button.setOnClickListener(this);
-      forget_password.setOnClickListener(this);
-      adminb.setOnClickListener(this);
-      nadmin.setOnClickListener(this);
-      mAuth = FirebaseAuth.getInstance();
+        callsignup.setOnClickListener(this);
+        login_button.setOnClickListener(this);
+        forget_password.setOnClickListener(this);
+        adminb.setOnClickListener(this);
+        nadmin.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
 
-      pd = new ProgressDialog(this);
+        pd = new ProgressDialog(this);
     }
 
     @Override
@@ -120,8 +120,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                   String email = emailID.getText().toString().trim();
-                   beginRecoverymail(email);
+                String email = emailID.getText().toString().trim();
+                beginRecoverymail(email);
 
             }
         });
@@ -129,7 +129,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               //dismiss dailog
+                //dismiss dailog
                 dialog.dismiss();
             }
         });
@@ -156,7 +156,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(@NonNull Exception e) {
                 pd.dismiss();
-               Toast.makeText(getApplicationContext(), "Error :" + e , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error :" + e , Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -196,7 +196,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         if (!validuser(view) || !validpass(view)) {
             return;
         } else {
-                isUser();
+            isUser();
         }
 
     }
@@ -204,7 +204,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private void isUser() {
         final String enteredemail = user.getEditText().getText().toString().trim();
         final String enteredPassword = pwd.getEditText().getText().toString().trim();
-       // progressBar.setVisibility(ProgressBar.VISIBLE);
+        // progressBar.setVisibility(ProgressBar.VISIBLE);
         mAuth.signInWithEmailAndPassword(enteredemail, enteredPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -213,15 +213,15 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                         pd.dismiss();
                         if (task.isSuccessful()) {
                             Intent intent;
-                             if(isadmin){
-                                 intent = new Intent(loginActivity.this,AdminCategoryActivity.class);
-                             }else {
-                                 intent = new Intent(loginActivity.this, MainActivity.class);
-                             }
+                            if(isadmin){
+                                intent = new Intent(loginActivity.this,AdminCategoryActivity.class);
+                            }else {
+                                intent = new Intent(loginActivity.this, MainActivity.class);
+                            }
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         } else {
-                          Toast.makeText(getApplicationContext(),"Some error occured",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Some error occured",Toast.LENGTH_SHORT).show();
                         }
 
                         // ...

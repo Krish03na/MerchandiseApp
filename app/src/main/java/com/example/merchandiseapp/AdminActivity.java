@@ -35,16 +35,16 @@ import java.util.HashMap;
 public class AdminActivity extends AppCompatActivity {
 
 
-     String categoryname,description,Pname,price,saveCurrentDate,saveCurrentTime,RandomProductKey,ImageUrl;
-     ImageView input_image;
-     EditText product_name,product_description,product_price;
-     Button addnew;
-     ProgressDialog progressDialog;
+    String categoryname,description,Pname,price,saveCurrentDate,saveCurrentTime,RandomProductKey,ImageUrl;
+    ImageView input_image;
+    EditText product_name,product_description,product_price;
+    Button addnew;
+    ProgressDialog progressDialog;
 
-     StorageReference ProductImageRef;
-     DatabaseReference Productref;
-     private static  int GalleryPick = 1 ;
-     private Uri imageUri;
+    StorageReference ProductImageRef;
+    DatabaseReference Productref;
+    private static  int GalleryPick = 1 ;
+    private Uri imageUri;
 
 
 
@@ -148,7 +148,7 @@ public class AdminActivity extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-               // Toast.makeText(getApplicationContext(),"Product Image uploaded successfully",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(),"Product Image uploaded successfully",Toast.LENGTH_SHORT).show();
                 Task<Uri> uriTask= uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -200,7 +200,7 @@ public class AdminActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{
-                   String message = task.getException().toString();
+                    String message = task.getException().toString();
                     Toast.makeText(AdminActivity.this, "Error :" + message, Toast.LENGTH_SHORT).show();
                 }
             }

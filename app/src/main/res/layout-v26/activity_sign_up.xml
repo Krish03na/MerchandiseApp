@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
-    tools:context=".SignUpActivity"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:padding="20dp"
+    tools:context=".SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +19,7 @@
             android:layout_height="135dp"
             android:fontFamily="@font/emilys_candy"
             android:paddingLeft="50dp"
+            android:paddingTop="1dp"
             android:text="Merch"
             android:textColor="#FFFFFF"
             android:textSize="100sp" />
@@ -53,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email"
@@ -125,7 +126,5 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="Already Have an account ?? Click here" />
-
-
     </LinearLayout>
 </ScrollView>
