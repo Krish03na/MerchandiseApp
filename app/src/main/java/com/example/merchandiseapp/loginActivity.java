@@ -47,15 +47,15 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        isadmin =false;
-        callsignup = (Button) findViewById(R.id.signup);
-        login_button = (Button) findViewById(R.id.login_btn);
-        forget_password = (Button) findViewById(R.id.frg_pwd);
-        user = (TextInputLayout) findViewById(R.id.username);
-        pwd = (TextInputLayout) findViewById(R.id.password);
+       isadmin =false;
+        callsignup = findViewById(R.id.signup);
+        login_button = findViewById(R.id.login_btn);
+        forget_password = findViewById(R.id.frg_pwd);
+        user = findViewById(R.id.useremail);
+        pwd = findViewById(R.id.password);
 
-        adminb = (TextView) findViewById(R.id.adminb);
-        nadmin = (TextView) findViewById(R.id.nadminb) ;
+        adminb = findViewById(R.id.adminb);
+        nadmin = findViewById(R.id.nadminb);
 
         callsignup.setOnClickListener(this);
         login_button.setOnClickListener(this);

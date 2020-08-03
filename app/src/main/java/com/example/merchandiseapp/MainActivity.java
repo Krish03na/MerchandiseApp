@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAuth = FirebaseAuth.getInstance();
 
-        recyclerView = (RecyclerView) findViewById(R.id.product_recycler);
+        recyclerView = findViewById(R.id.product_recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -180,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, MainActivity.class));
                 break;
             case R.id.nav_login:
-                startActivity(new Intent(MainActivity.this, loginActivity.class));
+                Intent intent = new Intent(MainActivity.this, loginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_logout:
                 signOut();

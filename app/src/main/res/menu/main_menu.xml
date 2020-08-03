@@ -7,9 +7,6 @@
             android:id="@+id/nav_home"
             android:title="@string/home" />
         <item
-            android:id="@+id/nav_shopcat"
-            android:title="@string/shop_by_category" />
-        <item
             android:id="@+id/nav_orders"
             android:title="@string/your_orders" />
     </group>
@@ -34,8 +31,6 @@
         <menu>
               <item android:id="@+id/nav_contact"
                      android:title="@string/contact_us"/>
-              <item android:id="@+id/nav_rate"
-                     android:title="@string/rate"/>
         </menu>
     </item>
 </menu>

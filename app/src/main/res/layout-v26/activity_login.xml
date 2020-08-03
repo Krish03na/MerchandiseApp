@@ -37,34 +37,28 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/useremail"
             android:layout_width="match_parent"
-            android:id="@+id/username"
-            app:endIconMode="clear_text"
-            android:hint="Email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_height="wrap_content"
+            android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:id="@+id/password"
-            android:hint="@string/password"
-            app:endIconMode="clear_text"
-            android:layout_marginTop="5dp"
-            app:passwordToggleEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="textPassword"
-                />
-
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
