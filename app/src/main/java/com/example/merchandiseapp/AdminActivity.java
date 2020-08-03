@@ -180,20 +180,21 @@ public class AdminActivity extends AppCompatActivity {
     private void SaveProductInfo() {
         HashMap<String,Object> productMap = new HashMap<>();
         productMap.put("pid",RandomProductKey);
-        productMap.put("category",categoryname);
-        productMap.put("image",ImageUrl);
-        productMap.put("name",Pname);
-        productMap.put("description",description);
         productMap.put("date",saveCurrentDate);
         productMap.put("time",saveCurrentTime);
+        productMap.put("description",description);
+        productMap.put("image",ImageUrl);
+        productMap.put("category",categoryname);
+        productMap.put("name",Pname);
+        productMap.put("price",price);
+
+
 
         Productref.child(RandomProductKey).updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
-
-
                     //Toast.makeText(AdminActivity.this, "Product Added", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AdminActivity.this,AdminCategoryActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
