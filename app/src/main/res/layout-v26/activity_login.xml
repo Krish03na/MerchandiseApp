@@ -15,23 +15,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/emilys_candy"
-        android:text="Merch"
         android:paddingLeft="50dp"
         android:paddingTop="70dp"
-        android:textSize="100sp"
-        android:textColor="#FFFFFF"/>
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="@string/merch"
+        android:textColor="#FFFFFF"
+        android:textSize="100sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in to Continue"
+        android:text="@string/sign_in_to_continue"
         android:fontFamily="@font/emilys_candy"
         android:textSize="35sp"
-        android:textColor="#000"
         android:layout_gravity="center"/>
 
     <LinearLayout
@@ -47,32 +42,35 @@
             android:id="@+id/username"
             app:endIconMode="clear_text"
             android:hint="Email"
-            >
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/password"
-            android:hint="Password"
+            android:hint="@string/password"
+            app:endIconMode="clear_text"
             android:layout_marginTop="5dp"
             app:passwordToggleEnabled="true"
-            >
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:inputType="textPassword"
                 />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Forget Password"
+            android:text="@string/forget_password"
             android:id="@+id/frg_pwd"
             android:background="#00000000"
             android:layout_gravity="right"
@@ -82,7 +80,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GO"
+            android:text="@string/go"
             android:id="@+id/login_btn"
             android:background="#000"
             android:textColor="#fff"
@@ -94,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signup"
-            android:text="New User? Sign Up"
+            android:text="@string/new_user_sign_up"
             android:background="#00000000"
             android:layout_gravity="right"
             android:elevation="0dp"
@@ -111,7 +109,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/adminb"
             android:text="Admin"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:layout_marginLeft="60dp"
             />
@@ -123,5 +121,7 @@
             android:textSize="20dp"
             android:textColor="#000000"
             android:layout_marginLeft="100dp"/>
+
     </LinearLayout>
+
 </LinearLayout>

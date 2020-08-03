@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,15 +34,17 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
     FirebaseDatabase root;
     DatabaseReference ref;
 
-    ProgressBar progressBar;
+
+    ProgressDialog pd;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
 
-        progressBar.setVisibility(View.INVISIBLE);
+        pd = new ProgressDialog(this);
+
+
         mAuth = FirebaseAuth.getInstance();
 
         register = (Button) findViewById(R.id.register);
@@ -162,7 +165,7 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
                 regcnf.setErrorEnabled(false);
                 return true;
             }else{
-                 regpwd.setError("length 8-40 should contain 1 digit,lowercase,uppercase and a special character");
+                regpwd.setError("length 8-40 should contain 1 digit,lowercase,uppercase and a special character");
                 return false;
             }
         }else{
@@ -175,6 +178,8 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
 
 
     private void registeruser(View view){
+        pd.setMessage("Checking all the details entered");
+        pd.show();
         root = FirebaseDatabase.getInstance();
         ref = root.getReference("newusers");
         final String name = regfullname.getEditText().getText().toString();
@@ -185,12 +190,13 @@ public class SignUpActivity extends AppCompatActivity implements  View.OnClickLi
 
 
         if(validname(view) && validuser(view) && validemail(view) && validpass(view) && validphone(view)) {
-            progressBar.setVisibility(View.VISIBLE);
+
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressBar.setVisibility(View.INVISIBLE);
+
+                            pd.dismiss();
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
 

@@ -27,10 +27,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            tools:context = ".MainActivity">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/lay1"
+               android:layout_marginTop="35dp"
+               android:orientation="horizontal">
             <TextView
                 android:id="@+id/C_name"
                 android:layout_width="142dp"
@@ -41,36 +47,28 @@
                 android:text="@string/merch"
                 android:textColor="@android:color/black"
                 android:textSize="35sp"
-                app:layout_constraintBottom_toTopOf="@+id/description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+                 />
 
             <ImageView
                 android:id="@+id/cart"
-                android:layout_width="30dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="208dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="103dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="190dp"
+                android:layout_gravity="center"
                 android:contentDescription="@string/stores_the_product"
-                app:layout_constraintBottom_toTopOf="@+id/editText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/C_name"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
-
+           </LinearLayout>
             <TextView
                 android:id="@+id/description"
-                android:layout_width="341dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/amita"
                 android:text="@string/shop_all_the_merch_of_various_fests_events_n_hostels_and_departments"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/C_name" />
+                android:layout_below="@+id/lay1"
+                tools:ignore="UnknownId" />
 
             <EditText
                 android:id="@+id/editText"
@@ -86,31 +84,16 @@
                 android:hint="@string/search"
                 android:inputType="textPersonName"
                 android:text="@android:string/search_go"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description"
+               android:layout_below="@+id/description"
                 tools:targetApi="o" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/category_recycler"
-                android:layout_width="410dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categories" />
+                android:id="@+id/product_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+              android:layout_below="@+id/editText" />
 
-            <TextView
-                android:id="@+id/categories"
-                android:layout_width="103dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/categories"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -125,6 +108,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/ic_settings_black_24dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>
