@@ -1,14 +1,21 @@
 package com.example.merchandiseapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -32,7 +40,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class loginActivity extends AppCompatActivity implements View.OnClickListener {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class loginActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
 
     Button callsignup, login_button, forget_password;
@@ -42,6 +52,17 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     TextView adminb, nadmin;
     ProgressDialog pd;
     public boolean isadmin;
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    Menu mymenu;
+    TextView hname;
+    MenuItem login,logout,profile;
+    View hview;
+    CircleImageView profimage;
+    FirebaseDatabase root;
+    DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +86,28 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
         pd = new ProgressDialog(this);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+
+        //      setSupportActionBar(toolbar);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_draw_open, R.string.nav_draw_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
         nadmin.setVisibility(View.INVISIBLE);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
     @Override
     public void onClick(View view){
@@ -227,5 +264,76 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                         // ...
                     }
                 });
+    }
+    private void updateUI(FirebaseUser user){
+        Menu menu = navigationView.getMenu();
+        hview = navigationView.getHeaderView(0);
+        hname = hview.findViewById(R.id.headername);
+        profimage = hview.findViewById(R.id.profile_image);
+
+        MenuItem logout = menu.findItem(R.id.nav_logout);
+        MenuItem profile = menu.findItem(R.id.nav_profile);
+        MenuItem login = menu.findItem(R.id.nav_login);
+
+        root = FirebaseDatabase.getInstance();
+        ref = root.getReference("newusers");
+
+        String email ="Welcome";
+        user = mAuth.getCurrentUser();
+
+        if(user!=null) {
+            email = user.getEmail();
+            menu.removeItem(R.id.nav_login);
+        }else {
+            menu.removeItem(R.id.nav_logout);
+            menu.removeItem(R.id.nav_profile);
+        }
+
+        hname.setText(email);
+        navigationView.invalidate();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        mymenu = menu;
+        login =  mymenu.findItem(R.id.nav_login);
+        logout = mymenu.findItem(R.id.nav_logout);
+        profile = mymenu.findItem(R.id.nav_profile);
+        return true;
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                startActivity(new Intent(loginActivity.this, MainActivity.class));
+                break;
+            case R.id.nav_login:
+                Intent intent = new Intent(loginActivity.this, loginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_logout:
+                signOut();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void signOut() {
+        mAuth.signOut();
+        startActivity(new Intent(loginActivity.this, MainActivity.class));
     }
 }
